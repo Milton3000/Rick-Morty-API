@@ -19,7 +19,7 @@ const CardDetails = () => {
   return (
     <div className="container d-flex justify-content-center">
       <div className="d-flex flex-column gap-3">
-        <h1 className="">{name}</h1>
+        <h1 className="text-center">{name}</h1>
         <img src={image} alt="Card Pictures" className="img-fluid" />
         {(() => {
           if (status === "Dead") {
@@ -30,6 +30,32 @@ const CardDetails = () => {
             return <div className="badge bg-secondary fs-5">{status}</div>;
           }
         })()}
+
+        <div className="content">
+          <div className="div">
+            <span className="fw-bold">Gender :</span>
+            {gender}
+          </div>
+          <div className="div">
+            <span className="fw-bold">Species :</span>
+            {species}
+          </div>
+          <div className="div">
+            <span className="fw-bold">Type :</span>
+            {/* IF-sats för att kolla om type är empty = blir till unknown. */}
+            {type === "" ? "Unknown" : type}
+          </div>
+          <div className="div">
+            <span className="fw-bold">Location :</span>
+            {/* Både location och origin är objects och måste därför 
+            targetas med ?.name (titta på API:n) för att fungera  */}
+            {location?.name}
+          </div>
+          <div className="div">
+            <span className="fw-bold">Origin :</span>
+            {origin?.name}
+          </div>
+        </div>
       </div>
     </div>
   );
